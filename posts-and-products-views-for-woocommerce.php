@@ -62,11 +62,11 @@ if( !class_exists('PostsAndProductsViewsForWooCommerce') ) {
          */
         public function constants()
         {
-            $this->define('VERSION', '1.0');
-            $this->define('PREFIX', 'papvfwc_');
-            $this->define('TEXT_DOMAIN', 'papvfwc');
-            $this->define('PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
-            $this->define('PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
+            $this->define('PAPVFWC_VERSION', '1.0');
+            $this->define('PAPVFWC_PREFIX', 'papvfwc_');
+            $this->define('PAPVFWC_TEXT_DOMAIN', 'papvfwc');
+            $this->define('PAPVFWC_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
+            $this->define('PAPVFWC_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
         }
 
         /**
@@ -98,8 +98,8 @@ if( !class_exists('PostsAndProductsViewsForWooCommerce') ) {
          */
         public function enqueue_scripts()
         {
-            wp_enqueue_style(TEXT_DOMAIN . '-css', PLUGIN_DIR_URL . 'assets/css/style.css', '', VERSION);
-            wp_enqueue_script(TEXT_DOMAIN . '-custom-js', PLUGIN_DIR_URL . 'assets/js/custom.js', '', VERSION);
+            wp_enqueue_style(PAPVFWC_TEXT_DOMAIN . '-css', PAPVFWC_PLUGIN_DIR_URL . 'assets/css/style.css', '', PAPVFWC_VERSION);
+            wp_enqueue_script(PAPVFWC_TEXT_DOMAIN . '-custom-js', PAPVFWC_PLUGIN_DIR_URL . 'assets/js/custom.js', '', PAPVFWC_VERSION);
         }
 
         /**
