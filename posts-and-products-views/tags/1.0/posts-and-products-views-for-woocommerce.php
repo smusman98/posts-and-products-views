@@ -4,11 +4,10 @@
  * Plugin URI: https://www.scintelligencia.com/
  * Author: SCI Intelligencia
  * Description: Posts and Products Views for WooCommerce, Let the Admin know how many clicks they got on specific Post and WooCommerce Product.
- * Version: 1.1
+ * Version: 1.0
  * Author: Syed Muhammad Usman
  * Author URI: https://www.linkedin.com/in/syed-muhammad-usman/
  * License: GPL v2 or later
- * Stable tag: 1.1
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Tags: WC, posts, products, views, counter, track
  * @author Syed Muhammad Usman
@@ -63,7 +62,7 @@ if( !class_exists('PostsAndProductsViewsForWooCommerce') ) {
          */
         public function constants()
         {
-            $this->define('PAPVFWC_VERSION', '1.1');
+            $this->define('PAPVFWC_VERSION', '1.0');
             $this->define('PAPVFWC_PREFIX', 'papvfwc_');
             $this->define('PAPVFWC_TEXT_DOMAIN', 'papvfwc');
             $this->define('PAPVFWC_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
@@ -134,7 +133,7 @@ if( !class_exists('PostsAndProductsViewsForWooCommerce') ) {
             add_action('admin_menu', [$this, 'add_menu']);
             add_filter( 'manage_posts_columns', array( $this, 'posts_column_views') );
             add_action( 'manage_posts_custom_column', array( $this, 'posts_custom_column_views') );
-            add_filter('the_content', array( $this, 'counter' ), 10, 1);
+            add_filter('the_content', array( $this, 'counter' ));
             add_action('woocommerce_before_add_to_cart_form', array( $this, 'counter' ) );
         }
 
@@ -143,14 +142,13 @@ if( !class_exists('PostsAndProductsViewsForWooCommerce') ) {
          * @since 1.0
          * @version 1.0
          */
-        public function counter( $content )
+        public function counter()
         {
             $key = 'papvfwc_counter';
             $post_id = get_the_ID();
             $count = (int) get_post_meta( $post_id, $key, true );
             $count++;
             update_post_meta( $post_id, $key, $count );
-            return $content;
         }
 
         /**
