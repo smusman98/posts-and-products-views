@@ -4,16 +4,16 @@
  * Plugin URI: https://www.scintelligencia.com/
  * Author: SCI Intelligencia
  * Description: Posts and Products Views for WooCommerce, Let the Admin know how many clicks they got on specific Post and WooCommerce Product.
- * Version: 1.1
+ * Version: 1.3
  * Author: Syed Muhammad Usman
  * Author URI: https://www.linkedin.com/in/syed-muhammad-usman/
  * License: GPL v2 or later
- * Stable tag: 1.1
+ * Stable tag: 1.2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Tags: WC, posts, products, views, counter, track
  * @author Syed Muhammad Usman
  * @url https://www.fiverr.com/mr_ussi
- * @version 1.0
+ * @version 1.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -63,7 +63,7 @@ if( !class_exists('PostsAndProductsViewsForWooCommerce') ) {
          */
         public function constants()
         {
-            $this->define('PAPVFWC_VERSION', '1.1');
+            $this->define('PAPVFWC_VERSION', '1.3');
             $this->define('PAPVFWC_PREFIX', 'papvfwc_');
             $this->define('PAPVFWC_TEXT_DOMAIN', 'papvfwc');
             $this->define('PAPVFWC_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
@@ -136,6 +136,18 @@ if( !class_exists('PostsAndProductsViewsForWooCommerce') ) {
             add_action( 'manage_posts_custom_column', array( $this, 'posts_custom_column_views') );
             add_filter('the_content', array( $this, 'counter' ), 10, 1);
             add_action('woocommerce_before_add_to_cart_form', array( $this, 'counter' ) );
+            add_shortcode( 'papvfwc_views', array( $this, 'show_views' ) );
+        }
+
+        /**
+         * Renders shortcode
+         * @return string
+         * @since 1.2
+         * @version 1.0
+         */
+        public function show_views()
+        {
+            return $this->get_post_view();
         }
 
         /**

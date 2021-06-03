@@ -20,7 +20,6 @@ At a glance, this plugin adds the following:
 
 * Administrators can see Posts Views on WordPress Admin Panel > Posts > All Posts 
 * Administrators can see WC Product Views on WordPress Admin Panel > Products > All Products 
-* Shortcode [papvfwc_views] to show current Post's/ WC Product's views.
 * It can also work without WC only for Posts Views Counter.
 
 By default, this plugin once activated No configuration required, shows a Views counter on WC Products Table, And WordPress Posts Table. 
